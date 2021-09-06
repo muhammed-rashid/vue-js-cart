@@ -22,9 +22,9 @@ const cartStore = {
         }
     },
     mutations:{
-        addProductToCart(state,payload) {
+        addProductToCart(state,productData) {
            
-            var productData = payload
+
             const productInCartIndex =state.items.findIndex(
               (ci) => ci.productId === productData.id
             );
@@ -60,7 +60,10 @@ const cartStore = {
     
     actions:{
         addtoCart(context,payload){
-          context.commit('addProductToCart',payload)
+          const products = context.rootGetters['products/getProduct'];
+          let product = products.find((pro)=>pro.id == payload)
+         
+          context.commit('addProductToCart',product)
         },
       removeCart(context,payload){
           context.commit('removeProductFromCart',payload)

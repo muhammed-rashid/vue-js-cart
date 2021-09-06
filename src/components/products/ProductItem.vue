@@ -25,14 +25,9 @@ export default {
   methods: {
     addToCart() {
       
-   const prod = {
-        id: this.id,
-        image: this.image,
-        title: this.title,
-        price: this.price,
-      };
-      this.$store.dispatch('cart/addtoCart',prod)
-      console.log(prod);
+
+      this.$store.dispatch('cart/addtoCart',this.id)
+      
     },
   },
 };
